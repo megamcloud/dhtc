@@ -8,6 +8,7 @@ it's just another dht crawler <br>
 - [X] web ui
     - [X] dashboard
     - [X] search
+    - [X] discover
 - [X] containerized
     
 ## install
