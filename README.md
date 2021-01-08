@@ -32,4 +32,8 @@ optional arguments:
                         Public or not
   -wp WEB_INTERFACE_PORT, --web-interface-port WEB_INTERFACE_PORT
                         The port on which the webinterface runs
+                        
+# or just
+docker-compose up
+# this sets a container up and executes 'dhtc -w'
 ```
