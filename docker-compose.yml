@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  dhtc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: 'host'
+    ports:
+      - "4200:4200"
