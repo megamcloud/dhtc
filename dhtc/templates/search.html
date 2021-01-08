@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "functions.html" import buildTable %}
 
 {% block body %}
 <div class="container">
@@ -10,29 +11,6 @@
         <button type="submit" class="btn btn-default">search</button>
     </form>
 &nbsp;
-    <table class="table table-striped table-responsive table-bordered">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Title</th>
-                <th>Info Hash</th>
-                <th>Address</th>
-                <th>Seen</th>
-                <th>First seen</th>
-                <th>Last seen</th>
-            </tr>
-        </thead>
-        {% for result in results %}
-        <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ result.title }}</td>
-            <td>{{ result.info_hash }}</td>
-            <td>{{ result.addr[0] }}{{ result.addr[1] }}</td>
-            <td>{{ result.seen }}</td>
-            <td>{{ result.first_seen }}</td>
-            <td>{{ result.last_seen }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    {{ buildTable(results) }}
 </div>
 {% endblock %}

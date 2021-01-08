@@ -37,6 +37,14 @@ class WebHandler(object):
             "placeholder": ""
         })
 
+    async def handle_discover_request_get(self, req):
+        return self.build_page("discover.html", {
+            "items": self.db.get_x_random()
+        })
+
+    async def handle_discover_request_post(self, req):
+        return self.build_page("discover.html", {})
+
 
 async def create_webserver(db, host, port):
     wh = WebHandler(db)
@@ -45,7 +53,9 @@ async def create_webserver(db, host, port):
         web.get("/", wh.handle_root),
         web.get("/dashboard", wh.handle_dashboard),
         web.get("/search", wh.handle_search_get),
-        web.post("/search", wh.handle_search_post)
+        web.post("/search", wh.handle_search_post),
+        web.get("/discover", wh.handle_discover_request_get),
+        web.post("/discover", wh.handle_discover_request_post)
     ])
     r = web.AppRunner(app)
     await r.setup()

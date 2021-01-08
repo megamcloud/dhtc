@@ -25,8 +25,8 @@ class Crawler(Maga):
         log.debug("{} - {} > {}", self.addr_str(addr), self.addr_str(peer_addr), info_hash)
         if info_hash in self.used_hashes:
             return  # we are currently pulling data for this one
-        e = self.db.get(info_hash)
-        if e.seen != 0:
+        e = self.db.get(info_hash, addr, peer_addr)
+        if e.seen > 0:
             if e.addr != addr:
                 e.prev_addrs.append(e.addr)
                 e.addr = addr
