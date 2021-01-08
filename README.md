@@ -3,9 +3,12 @@
 it's just another dht crawler <br>
 ## features
 - [X] dht crawling
+  - [ ] multiprocess
+    - [ ] multi threaded
 - [X] web ui
     - [X] dashboard
     - [X] search
+- [X] containerized
     
 ## install
 ```shell
