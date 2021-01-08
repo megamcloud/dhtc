@@ -11,11 +11,11 @@ class Crawler(Maga):
     used_hashes = []
 
     def __init__(self, db: Database, bootstrap_nodes):
-        Maga.__init__(self, bootstrap_nodes=bootstrap_nodes)
+        Maga.__init__(self, bootstrap_nodes=bootstrap_nodes, interval=0.1)
         self.db = db
 
     async def handler(self, info_hash, addr):
-        pass  # log.debug("{} > {}", self.addr_str(addr), info_hash)
+        log.debug("{} > {}", self.addr_str(addr), info_hash)
 
     @staticmethod
     def addr_str(addr):
@@ -41,8 +41,8 @@ class Crawler(Maga):
         meta_info = await get_metadata(info_hash, peer_addr[0], peer_addr[1], loop=self.loop)
         if meta_info:
             try:
-                info_hash = proper_infohash(info_hash)
-                meta_info["proper_infohash"] = info_hash
+                meta_info["proper_infohash"] = proper_infohash(info_hash)
+                print(info_hash, meta_info["proper_infohash"])
             except Exception as e:
                 print(e)
                 pass
@@ -53,4 +53,4 @@ class Crawler(Maga):
 
         self.used_hashes.remove(info_hash)
         self.db.save(e)
-        log.debug(e.__dict__)
+        log.info(e.__dict__)

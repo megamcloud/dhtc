@@ -3,3 +3,5 @@ mala
 loguru
 jinja2
 aiohttp
+bencoder
+dataset

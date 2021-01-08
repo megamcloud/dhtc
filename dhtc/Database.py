@@ -29,7 +29,10 @@ class Database(object):
     def get_random_title(self):
         e = self.get_random_entry()
         if e and len(e.meta_infos) > 0:
-            return choice(e.meta_infos)["title"]
+            try:
+                return choice(e.meta_infos)["title"]
+            except KeyError:
+                pass
         return "no entries yet"
 
     def get_count(self):

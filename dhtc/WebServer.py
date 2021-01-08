@@ -17,7 +17,10 @@ class WebHandler(object):
         return web.Response(body=tpl.render(ctx), content_type="text/html")
 
     async def handle_root(self, req):
-        return self.build_page("dashboard.html", {})
+        return self.build_page("dashboard.html", {
+            "info_hash_count": self.db.get_count(),
+            "bootstrap_nodes": dhtc.BOOTSTRAP_NODES
+        })
 
     async def handle_dashboard(self, req):
         return self.build_page("dashboard.html", {
