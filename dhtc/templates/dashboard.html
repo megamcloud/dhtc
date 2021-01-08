@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="container">
+        <h2>Statistics</h2>
+        <h4>Collected info hashes: {{ info_hash_count }}</h4>
+        <h2>Bootstrap nodes</h2>
+        <ul class="list-group">
+            {% for node in bootstrap_nodes %}
+            <li class="list-group-item">{{ node[0] }}:{{ node[1] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

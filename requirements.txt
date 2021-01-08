@@ -1,0 +1,5 @@
+maga
+mala
+loguru
+jinja2
+aiohttp
